@@ -4,12 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
 @Entity
 @Table(name = "tb_game")
 public class GameModel {
