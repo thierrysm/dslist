@@ -1,11 +1,9 @@
 package com.example.dslist.dtos;
 
 import com.example.dslist.models.GameModel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class GameMinDto {
     private Long id;
     private String title;
