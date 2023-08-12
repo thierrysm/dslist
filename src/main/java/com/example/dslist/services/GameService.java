@@ -3,15 +3,13 @@ package com.example.dslist.services;
 import com.example.dslist.dtos.GameDto;
 import com.example.dslist.dtos.GameMinDto;
 import com.example.dslist.models.GameModel;
+import com.example.dslist.projections.GameMinProjection;
 import com.example.dslist.repositories.GameRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class GameService {
@@ -28,5 +26,10 @@ public class GameService {
     public GameDto findById(Long id) {
         GameModel result = gameRepository.findById(id).get();
         return new GameDto(result);
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDto> findByGameList(Long listId) {
+        return gameRepository.findByGameList(listId).stream().map(GameMinDto::new).toList();
     }
 }
